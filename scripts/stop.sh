@@ -1,14 +1,6 @@
 #!/bin/bash
 #Stopping node servers
 echo "Stopping any existing node servers"
+cd /home/ec2-user/express-app
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-source .bash_profile
-
-nvm install v14.*
-
-source .bash_profile
-
-npm install -g pm2
-
-pm2 stop nodeapp
+pm2 kill
