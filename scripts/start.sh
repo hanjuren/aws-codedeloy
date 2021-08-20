@@ -9,4 +9,4 @@ rm -r package-lock.json
 
 npm install
 
-pm2 start app.js -- name app
+node app.js > app.out.log> app.err.log < /dev/null &
