@@ -1,7 +1,6 @@
-#!/bin/bash
+source /home/ec2-user/.bash_profile
 cd /home/ec2-user/express-app
 
-source /home/ec2-user/.bash_profile
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
