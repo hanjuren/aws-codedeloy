@@ -9,4 +9,4 @@ rm -r package-lock.json
 
 npm install
 
-npm start
+pm2 start app.js -- name app
