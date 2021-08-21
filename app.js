@@ -4,7 +4,7 @@ const app = express();
 const port = 4000;
 
 app.get('/', (req, res) => {
-  res.send('<h1>env 만들기</h1>');
+  res.send('<h1>I Love You❤</h1>');
 });
 app.get('/user', (req, res) => {
   res.send('<h1>유저 라우터</h1>');
