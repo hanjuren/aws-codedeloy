@@ -10,37 +10,38 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - name: delete package-lock.json
-        run: rm package-lock.json
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          PORT: ${{ secrets.NODE_PORT }}
-          file_name: .env.dev
-
-      - name: Build
-        run: npm build
-
-
-      - name: Make tar file
-        run: tar -cpvzf ./$GITHUB_SHA.tgz *
-        shell: bash
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
+      
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: delete package-lock.json
+        run: rm package-lock.json
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Create env file
+        run: |
+          touch .env
+          echo PORT: ${{ secrets.NODE_PORT }} >> .env
+          cat .env
+
+      - name: Build
+        run: npm build
+
+      - name: Make tar file
+        run: tar -cpvzf ./$GITHUB_SHA.tgz *
+        shell: bash
+
       
       - name: Upload to S3
         run: |
