@@ -37,7 +37,9 @@ jobs:
           cd secret
           touch .env
           echo PORT: ${{ secrets.NODE_PORT }} >> .env
-          echo hanjuren: ho >> hi.txt
+          echo hanjuren: ho >> .env
+          echo database: recycle >> .env
+          echo databaseport: 5432 >> .env
           cat .env
           cd ../
 
