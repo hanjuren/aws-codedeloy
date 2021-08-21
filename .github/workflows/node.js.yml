@@ -25,6 +25,8 @@ jobs:
 
       - name: delete package-lock.json
         run: rm package-lock.json
+      - name: delete package-lock.json
+        run: rm .gitignore
 
       - name: Install Dependencies
         run: npm install
@@ -35,6 +37,12 @@ jobs:
           echo PORT: ${{ secrets.NODE_PORT }} >> hi.txt
           echo hanjuren: ho >> hi.txt
           cat hi.txt
+      - name: Create env file
+        run: |
+          touch .env
+          echo PORT: ${{ secrets.NODE_PORT }} >> .env
+          echo hanjuren: ho >> hi.txt
+          cat .env
 
       - name: Build
         run: npm build
