@@ -38,6 +38,7 @@ jobs:
           touch .env	
           cat << EOF >> .env	
           ${{ secrets.ENV }}
+          EOF
           cd ../
 
       - name: Build
