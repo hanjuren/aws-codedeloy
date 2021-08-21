@@ -21,14 +21,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build
-        run: npm build
-
       - name: Create env file
         run: |
           touch .env
           echo PORT=${{secrets.NODE_PORT}} >> .env
-          cat .env	
+          cat .env
+          	
+      - name: Build
+        run: npm build
+
 
       - name: Make tar file
         run: tar -cpvzf ./$GITHUB_SHA.tgz *
