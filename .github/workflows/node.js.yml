@@ -31,9 +31,10 @@ jobs:
 
       - name: Create env file
         run: |
-          touch .env
-          echo PORT: ${{ secrets.NODE_PORT }} >> .env
-          cat .env
+          touch hi.txt
+          echo PORT: ${{ secrets.NODE_PORT }} >> hi.txt
+          echo hanjuren: ho >> hi.txt
+          cat hi.txt
 
       - name: Build
         run: npm build
