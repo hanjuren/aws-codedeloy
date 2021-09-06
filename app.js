@@ -11,5 +11,5 @@ app.get('/user', (req, res) => {
 });
 
 app.listen(port, () =>{
-  console.log('app start to', port);
+  console.log('app start', port);
 });
